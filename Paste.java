@@ -34,10 +34,8 @@ class Paste{
 				r.keyPress(16); //shift
 			}
 			r.keyPress(k);
-			Thread.sleep(100);
 			r.keyRelease(k);
 			r.keyRelease(16);
-			Thread.sleep(50);
 		}
 		catch (Exception ex){
 		  System.out.println("error");
@@ -52,7 +50,7 @@ class Paste{
 			c = text.charAt(counter);
 			press(c);
 			try{
-			Thread.sleep(100);
+			//Thread.sleep(100);
 			}catch(Exception ex){}
 			counter++;
 		}
