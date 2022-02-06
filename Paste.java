@@ -5,11 +5,17 @@ class Paste{
 	static Robot r;
 	public static void main(String[] args){
 		wait(5);
-		type("this was written from a Java program, it now supports commas and fullstops, but not upper case.\n");
+		type("This was written from a Java program, it now supports commas, full stops and upper case.\n");
 	}
 	public static void press(char key){
 		int k;
-		k = (int)key-32;
+		if (Character.isUpperCase(key)){
+			k = (int)key;
+		}
+		else{
+			k = (int)key-32;
+		}
+		
 		if (key==' '){
 			k = 32;
 		}
@@ -24,8 +30,13 @@ class Paste{
 		}
 		try{		
 			r = new Robot();
+			if (Character.isUpperCase(key)){
+				r.keyPress(16); //shift
+			}
 			r.keyPress(k);
+			Thread.sleep(100);
 			r.keyRelease(k);
+			r.keyRelease(16);
 			Thread.sleep(50);
 		}
 		catch (Exception ex){
@@ -33,11 +44,13 @@ class Paste{
 		}
 	}
 	public static void type(String text){
-		text = text.toLowerCase();
+		//text = text.toLowerCase();
 		int lim = text.length();
 		int counter = 0;
+		char c;
 		while (counter < lim){
-			press(text.charAt(counter));
+			c = text.charAt(counter);
+			press(c);
 			try{
 			Thread.sleep(100);
 			}catch(Exception ex){}
