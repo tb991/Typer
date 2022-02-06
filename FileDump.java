@@ -2,7 +2,7 @@ import java.awt.Robot;
 import java.util.*;  
 import java.lang.*;
 import java.io.File;
-
+// this program dumps whatever english is written in "kjv.txt"
 class FileDump{
 	static Robot r;
 	static boolean lowercaseonly = true;
